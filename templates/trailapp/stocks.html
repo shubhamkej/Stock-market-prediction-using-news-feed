@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="container" style="text-align: left;margin-top: 5px;">
+            <h1>{{ company_details.company_name }}</h1>
+            <h6> Series : {{ company_details.company_series }}</h6>
+        </div>
+        <div class="container">
+          <p>symbol: {{ company_details.company_symbol }}  |        
+            ISIN :{{ company_details.isin_code }}     |   
+            Status: {{ company_details.company_status }} </p>
+        </div>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Last Price</th>
+                    <th scope="col">Previous Close</th>
+                    <th scope="col">Open</th>
+                    <th scope="col">High</th>
+                    <th scope="col">Low</th>
+                    <th scope="col">Close</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {{company_details.current_price}} </td>
+                    <td>{{company_details.previous_close}}</td>
+                    <td>{{company_details.company_open}}</td>
+                    <td>{{company_details.company_high}}</td>
+                    <td>{{company_details.company_low}}</td>
+                    <td>{{company_details.company_close}}</td>
+                  </tr>
+                </tbody>
+              </table>            
+        </div>
+        <div class="container mt-3">
+            <h2>Other Links</h2>
+            <br>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">Historical Data</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu1">Charted Data</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu2">Top Gainers</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#menu3">Top Loosers</a>
+                </li>
+            </ul>
+          
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div id="home" class="container tab-pane active"><br>
+                <h3 style="width: 95%;">Historical Data</h3>
+                <p>Get Historical Data</p>
+                <form action="{% url 'historical' %}" method="GET">
+                    <input type="hidden" name="stockname" value={{ company_details.company_symbol }}>
+                    <button type="submit" id="stock_submit" class="btn btn-info width-20">Historical Data</button>
+                </form>
+
+              </div>
+              <div id="menu1" class="container tab-pane fade"><br>
+                <h3 style="width: 95%;">Charted Data</h3>
+                <p>Get Charted Data</p>
+                 <form action="{% url 'graph' %}" method="GET">
+                    <input type="hidden" name="stockname" value={{ company_details.company_symbol }}>
+                    <button type="submit" id="stock_submit" class="btn btn-info width-20">Charted Data</button>
+                </form>
+              </div>
+              <div id="menu2" class="container tab-pane fade"><br>
+                <h3 style="width: 95%;">Top Gainers</h3>
+                <p>See Top Gainers</p>
+              </div>
+              <div id="menu3" class="container tab-pane fade"><br>
+                <h3 style="width: 95%;">See Top Loosers</h3>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          
+    
+    </div>
+{% endblock %}

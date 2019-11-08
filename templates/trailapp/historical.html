@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h1 style="text-align: left;">Historical Data</h1>
+    </div>
+    <div class="container">
+        <h3 style="text-align: left;">View Historical Price Data of {{ company_details.company_name }} </h3>
+    </div>
+    <div class="container">
+        {{ company_details.df }}
+    </div>
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Prev</th>
+                <th scope="col">Close</th>
+                <th scope="col">Open</th>
+                <th scope="col">Turnover</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for row in company_details.df %}
+                    <tr>
+                            <td scope="row">{{ row['Date'] }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                    </tr>
+                    <tr>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                            <td scope="row">{{ row }}</td>
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+{% endblock %}

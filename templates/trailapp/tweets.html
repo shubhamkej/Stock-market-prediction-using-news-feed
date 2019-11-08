@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Start Blog Area -->
+  <div id="blog" class="blog-area">
+    <div class="blog-inner area-padding">
+      <div class="blog-overly"></div>
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>Recent Tweets</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Start Left Blog -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="blog.html">
+										<img src="{% static 'img/blog/1.jpg' %}" alt="">
+									</a>
+              </div>
+              <div class="blog-meta">
+                <span class="comments-type">
+										<i class="fa fa-thumbs-up"></i>
+										<a href="#">{{ data.likes }}</a>
+									</span>
+                <span class="date-type">
+										<i class="fa fa-calendar"></i>{{ data.date }}
+									</span>
+              </div>
+              <div class="blog-text">
+                <h4>
+                                        <a href="blog.html">{% if data %} {{ data.company_name }} {% endif %}</a>
+									</h4>
+                <p>
+                    <h6>{{ data.tweet }}</h6>
+                </p>
+              </div>
+              <span>
+									<a href="blog.html" class="ready-btn">Read more</a>
+								</span>
+            </div>
+            <!-- Start single blog -->
+          </div>
+          <!-- End Left Blog-->
+          <!-- Start Left Blog -->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="blog.html">
+										<img src="{% static 'img/blog/2.jpg' %}" alt="">
+									</a>
+              </div>
+              <div class="blog-meta">
+                <span class="comments-type">
+										<i class="fa fa-thumbs-up"></i>
+										<a href="#">{{ data1.likes }}</a>
+									</span>
+                <span class="date-type">
+										<i class="fa fa-calendar"></i> {{ data1.date }}
+									</span>
+              </div>
+              <div class="blog-text">
+                <h4>
+                                        <a href="blog.html">{{ data1.company_name }} </a>
+									</h4>
+                <p>
+                  <h6>{{ data1.tweet }}</h6>
+                </p>
+              </div>
+              <span>
+									<a href="blog.html" class="ready-btn">Read more</a>
+								</span>
+            </div>
+            <!-- Start single blog -->
+          </div>
+          <!-- End Left Blog-->
+          <!-- Start Right Blog-->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="blog.html">
+										<img src="{% static 'img/blog/3.jpg' %}" alt="">
+									</a>
+              </div>
+              <div class="blog-meta">
+                <span class="comments-type">
+										<i class="fa fa-thumbs-up"></i>
+										<a href="#">{{ data2.likes }}</a>
+									</span>
+                <span class="date-type">
+										<i class="fa fa-calendar"></i>{{ data2.date }}
+									</span>
+              </div>
+              <div class="blog-text">
+                <h4>
+                                        <a href="blog.html">{{ data2.company_name }}</a>
+									</h4>
+                <p>
+                 <h6> {{ data2.tweet }} </h6> 
+                </p>
+              </div>
+              <span>
+									<a href="blog.html" class="ready-btn">Read more</a>
+								</span>
+            </div>
+          </div>
+          <!-- End Right Blog-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Blog -->
+  
+{% endblock %}

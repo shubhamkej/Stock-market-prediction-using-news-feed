@@ -1,0 +1,108 @@
+{% load static %}
+
+<div id="preloader"></div>
+  <header style="height: 70px;width: 100%;">
+    <!-- header-area start -->
+    <div id="sticker" class="header-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+                <!-- Brand -->
+                <a class="navbar-brand page-scroll sticky-logo" href="{% url 'index' %}">
+                  <h1><span>predict</span>Stock</h1>
+                  <!-- Uncomment below if you prefer to use an image logo -->
+                  <!-- <img src="img/logo.png" alt="" title=""> -->
+								</a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
+                <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li 
+                  {% if 'dashboard' in request.path %}
+                  class="nav-item active mr-3"
+                  {% else %}
+                  class="nav-item mr-3"
+                  {% endif %}
+                  >
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                      Welcome {{ user.username }} (dashboard)</a>
+                  </li>
+                  <li class="nav-item mr-3">
+                    <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                      <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                    <form action="{% url 'logout' %}" id="logout" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden">
+                    </form>
+                  </li>
+
+                 {% else %}
+                  <li class="active">
+                    <a class="page-scroll" href="{% url 'index' %}">Home</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#stocks">Stock Details</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#team">News</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="{% url 'tweets' %}">Tweets</a>
+                  </li>
+                 <!--
+                  <li>
+                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                  </li>
+                   
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Drop Down<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href=# >Drop Down 1</a></li>
+                      <li><a href=# >Drop Down 2</a></li>
+                    </ul> 
+                  </li> -->
+
+                  <li
+                    {% if 'register' in request.path %}
+                    class="nav-item active"
+                    {% else %}
+                    class="nav-item"
+                    {% endif %}
+                  >
+                    <a class="page-scroll" href="{% url 'signup' %}">Signup</a>
+                  </li>
+
+                  <li
+                     {% if 'login' in request.path %}
+                    class="nav-item active"
+                    {% else %}
+                    class="nav-item"
+                    {% endif %}
+                  >
+                    <a class="page-scroll" href="{% url 'login' %}">Login</a>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+              <!-- navbar-collapse -->
+            </nav>
+            <!-- END: Navigation -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- header-area end -->
+  </header>
+  <!-- header end -->
